@@ -4,6 +4,9 @@ import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.EqualsAndHashCode;
@@ -32,6 +35,9 @@ public class Item extends BaseEntity {
 	private int amount;
 
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "categori_id")
+	private Category categori;
 	
 	
 	@Override
