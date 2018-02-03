@@ -1,9 +1,14 @@
 package classadd;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -24,6 +29,9 @@ public class User extends BaseEntity {
 	@Enumerated(EnumType.STRING)// ORDINAL -  номерація з енум , STRING - назви з енум повні
 	private Gender gender;
 
+	@OneToMany(mappedBy = "user", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+	private List<UserOrder> items = new ArrayList<>();
+	
 	public User(String firstName, String lastName, Gender gender) {
 		this.firstName = firstName;
 		this.lastName = lastName;

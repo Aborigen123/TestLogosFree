@@ -10,7 +10,7 @@
 			<property name="hibernate.connection.url"
 				value="jdbc:mysql://localhost:3306/logostestfree?useSSL=false&amp;serverTimezone=UTC" /><!-- test_jpa назва бази дани і створюємо її в mysql workbenche -->
 			<property name="hibernate.connection.username" value="root" />
-			<property name="hibernate.connection.password" value="123456" />
+			<property name="hibernate.connection.password" value="1234" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" /> <!-- MySQL5InnoDBDialect двіжок -->
 			
 			<!-- update, create, create-drop -->

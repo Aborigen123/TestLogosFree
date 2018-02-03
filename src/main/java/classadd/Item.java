@@ -1,11 +1,16 @@
 package classadd;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -35,10 +40,16 @@ public class Item extends BaseEntity {
 	private int amount;
 
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	@JoinColumn(name = "categori_id")
 	private Category categori;
 	
+	
+	@ManyToMany 
+ 	@JoinTable(name = "user_order_item",  
+ 	joinColumns = @JoinColumn(name = "item_id"), 
+ 	inverseJoinColumns = @JoinColumn(name = "user_order_id"))
+	private List<UserOrder> items = new ArrayList<>();
 	
 	@Override
 	public String toString() {
